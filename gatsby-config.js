@@ -19,13 +19,13 @@ module.exports = {
   },
   plugins: [
     //Works when I remove this!
-    // {
-    //   resolve: "gatsby-source-contentful",
-    //   options: {
-    //     spaceId: process.env.SPACE_ID,
-    //     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-    //   },
-    // },
+    {
+      resolve: "gatsby-source-contentful",
+      options: {
+        spaceId: process.env.SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
     "gatsby-plugin-sass",
     {
       resolve: "gatsby-source-filesystem",
