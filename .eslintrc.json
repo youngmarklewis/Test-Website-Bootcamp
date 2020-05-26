@@ -1,0 +1,30 @@
+{
+    "extends": [
+        "airbnb",
+        "prettier"
+    ],
+    "plugins": [
+        "prettier"
+    ],
+    "rules": {
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ],
+        "jsx-quotes": [
+            "error",
+            "prefer-single"
+        ],
+        "react/destructuring-assignment": "ignore:",
+        "react/prop-types": "ignore:",
+        "prettier/prettier": "error",
+        "no-unused-vars": "warn",
+        "class-methods-use-this": "warn",
+        "no-console": "off"
+    }
+}
