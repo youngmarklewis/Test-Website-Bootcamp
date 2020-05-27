@@ -4,10 +4,12 @@ import React from "react"
 import { Link } from "gatsby" // React Link component
 
 import Layout from "../components/layout"
+import Head from "../components/head"
 
 const IndexPage = () => {
   return (
     <Layout>
+      <Head title="Home" />
       <h1>My Website</h1>
       <h2>I'm learning Gatsby</h2>
       <p>

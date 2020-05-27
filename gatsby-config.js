@@ -18,7 +18,7 @@ module.exports = {
     author: "Mark Lewis Young",
   },
   plugins: [
-    //Works when I remove this!
+    "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-source-contentful",
       options: {
