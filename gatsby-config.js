@@ -40,6 +40,7 @@ module.exports = {
       options: {
         plugins: [
           "gatsby-remark-relative-images",
+          "@contentful/gatsby-transformer-contentful-richtext",
           {
             resolve: "gatsby-remark-images",
             options: {
