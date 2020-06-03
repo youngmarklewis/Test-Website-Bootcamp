@@ -1,0 +1,43 @@
+{
+  allContentfulBlogPost {
+    edges {
+      node {
+        title
+        publishedDate
+        author
+        slug
+        image {
+          fluid {
+            src
+          }
+        }
+        content {
+          childContentfulRichText {
+            html
+            timeToRead
+          }
+        }
+      }
+    }
+  }
+}
+
+query MyQuery {
+  contentfulBlogPost {
+    title
+    subTitle
+    author
+    publishedDate
+    image {
+      fluid {
+        src
+      }
+    }
+    content {
+      childContentfulRichText {
+        html
+        timeToRead
+      }
+    }
+  }
+}

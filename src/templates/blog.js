@@ -1,18 +1,42 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import Image from "gatsby-image"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
 
+// export const query = graphql`
+//   query($slug: String!) {
+//     contentfulBlogPost(slug: { eq: $slug }) {
+//       title
+//       author
+//       publishedDate(formatString: "MMMM Do, YYYY")
+//       body {
+//         json
+//       }
+//     }
+//   }
+// `
+
+// My new test query
 export const query = graphql`
   query($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
+      subTitle
       author
       publishedDate(formatString: "MMMM Do, YYYY")
-      body {
-        json
+      image {
+        fluid {
+          src
+        }
+      }
+      content {
+        childContentfulRichText {
+          html
+          timeToRead
+        }
       }
     }
   }
@@ -49,13 +73,27 @@ const Blog = props => {
   return (
     <Layout>
       <Head title={props.data.contentfulBlogPost.title} />
+      <Image
+        fluid={props.data.contentfulBlogPost.image.fluid}
+        alt={props.data.contentfulBlogPost.title}
+      />
       <h1>{props.data.contentfulBlogPost.title}</h1>
-      <p>{props.data.contentfulBlogPost.author}</p>
-      <p>{props.data.contentfulBlogPost.publishedDate}</p>
-      {documentToReactComponents(
-        props.data.contentfulBlogPost.body.json,
-        options
-      )}
+      <p>{props.data.contentfulBlogPost.subTitle}</p>
+      <p>
+        {props.data.contentfulBlogPost.author}
+        {props.data.contentfulBlogPost.publishedDate}
+      </p>
+      <div
+        dangerouslySetInnerHTML={{
+          __html:
+            props.data.contentfulBlogPost.content.childContentfulRichText.html,
+        }}
+      />
+      {
+        documentToReactComponents()
+        //props.data.contentfulBlogPost.body.json,
+        //options
+      }
     </Layout>
   )
 }
