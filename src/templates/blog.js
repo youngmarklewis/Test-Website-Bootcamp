@@ -59,24 +59,20 @@ export const query = graphql`
 // This code renders our content to the blog slug
 
 const Blog = props => {
-  const options = {
-    renderNode: {
-      "embedded-asset-block": node => {
-        const alt = node.data.target.fields.title["en-US"]
-        const url = node.data.target.fields.file["en-US"].url
-        return <img alt={alt} src={url} />
-      },
-    },
-  }
+  // const options = {
+  //   renderNode: {
+  //     "embedded-asset-block": node => {
+  //       const alt = node.data.target.fields.title["en-US"]
+  //       const url = node.data.target.fields.file["en-US"].url
+  //       return <Image alt={alt} src={url} />
+  //     },
+  //   },
+  // }
   //console.log(options)
 
   return (
     <Layout>
       <Head title={props.data.contentfulBlogPost.title} />
-      <Image
-        fluid={props.data.contentfulBlogPost.image.fluid}
-        alt={props.data.contentfulBlogPost.title}
-      />
       <h1>{props.data.contentfulBlogPost.title}</h1>
       <p>{props.data.contentfulBlogPost.subTitle}</p>
       <p>
@@ -89,11 +85,6 @@ const Blog = props => {
             props.data.contentfulBlogPost.content.childContentfulRichText.html,
         }}
       />
-      {
-        documentToReactComponents()
-        //props.data.contentfulBlogPost.body.json,
-        //options
-      }
     </Layout>
   )
 }
