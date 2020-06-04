@@ -1,5 +1,7 @@
 import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
+import Image from "gatsby-image"
+import styled from "styled-components"
 
 import Layout from "../components/layout"
 import blogStyles from "./blog.module.scss"
@@ -33,6 +35,15 @@ const BlogPage = () => {
             slug
             publishedDate(formatString: "MMMM Do, YYYY")
             author
+            image {
+              fluid {
+                base64
+                aspectRatio
+                src
+                srcSet
+                sizes
+              }
+            }
           }
         }
       }
@@ -63,6 +74,9 @@ const BlogPage = () => {
           return (
             <li className={blogStyles.post}>
               <Link to={`/blog/${edge.node.slug}`}>
+                <div>
+                  <Image fluid={edge.node.image.fluid} />
+                </div>
                 <h2>{edge.node.title}</h2>
                 <p>{edge.node.author}</p>
                 <p>{edge.node.publishedDate}</p>
