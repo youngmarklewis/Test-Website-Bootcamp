@@ -41,3 +41,31 @@ query MyQuery {
     }
   }
 }
+
+query MyQuery {
+  contentfulBlogPost {
+    title
+    subTitle
+    author
+    publishedDate
+    content {
+      childContentfulRichText {
+        html
+        timeToRead
+      }
+    }
+  }
+  allContentfulBlogPost {
+    nodes {
+      image {
+        fluid {
+          base64
+          aspectRatio
+          src
+          srcSet
+          sizes
+        }
+      }
+    }
+  }
+}

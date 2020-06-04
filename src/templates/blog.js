@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+//import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Image from "gatsby-image"
 
 import Layout from "../components/layout"
@@ -29,7 +29,11 @@ export const query = graphql`
       publishedDate(formatString: "MMMM Do, YYYY")
       image {
         fluid {
+          base64
+          aspectRatio
           src
+          srcSet
+          sizes
         }
       }
       content {
@@ -68,16 +72,19 @@ const Blog = props => {
   //     },
   //   },
   // }
-  //console.log(options)
+  // console.log(options)
 
   return (
     <Layout>
       <Head title={props.data.contentfulBlogPost.title} />
+      <Image fluid={props.data.contentfulBlogPost.image.fluid} />
       <h1>{props.data.contentfulBlogPost.title}</h1>
       <p>{props.data.contentfulBlogPost.subTitle}</p>
       <p>
-        {props.data.contentfulBlogPost.author}
-        {props.data.contentfulBlogPost.publishedDate}
+        <span>
+          {props.data.contentfulBlogPost.author}
+          {props.data.contentfulBlogPost.publishedDate}
+        </span>
       </p>
       <div
         dangerouslySetInnerHTML={{
