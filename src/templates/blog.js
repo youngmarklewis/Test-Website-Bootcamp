@@ -79,19 +79,19 @@ const Blog = props => {
     <Layout>
       <Head title={props.data.contentfulBlogPost.title} />
       <p>{props.data.contentfulBlogPost.fullDate}</p>
-      <Image fluid={props.data.contentfulBlogPost.image.fluid} />
       <h1>{props.data.contentfulBlogPost.title}</h1>
-      <p>{props.data.contentfulBlogPost.subTitle}</p>
+      {props.data.contentfulBlogPost.author} {" Add author image "}
+      <Image fluid={props.data.contentfulBlogPost.image.fluid} />
+      <h2>{props.data.contentfulBlogPost.subTitle}</h2>
       <p>
         <span>
-          {props.data.contentfulBlogPost.author},
           {props.data.contentfulBlogPost.fromNow}
           <p>
             {
               props.data.contentfulBlogPost.content.childContentfulRichText
                 .timeToRead
-            }{" "}
-            Minute read...
+            }
+            {" Minute read... "}
           </p>
         </span>
       </p>
