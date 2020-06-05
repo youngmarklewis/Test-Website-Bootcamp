@@ -26,7 +26,8 @@ export const query = graphql`
       title
       subTitle
       author
-      publishedDate(formatString: "MMMM Do, YYYY")
+      fullDate: publishedDate(formatString: "Do MMMM YYYY")
+      fromNow: publishedDate(fromNow: true)
       image {
         fluid {
           base64
@@ -77,14 +78,21 @@ const Blog = props => {
   return (
     <Layout>
       <Head title={props.data.contentfulBlogPost.title} />
+      <p>{props.data.contentfulBlogPost.fullDate}</p>
       <Image fluid={props.data.contentfulBlogPost.image.fluid} />
       <h1>{props.data.contentfulBlogPost.title}</h1>
       <p>{props.data.contentfulBlogPost.subTitle}</p>
       <p>
         <span>
           {props.data.contentfulBlogPost.author},
-          {props.data.contentfulBlogPost.publishedDate}
-          <p>{props.data.contentfulBlogPost.content.childContentfulRichText.timeToRead} Minute read...</p>
+          {props.data.contentfulBlogPost.fromNow}
+          <p>
+            {
+              props.data.contentfulBlogPost.content.childContentfulRichText
+                .timeToRead
+            }{" "}
+            Minute read...
+          </p>
         </span>
       </p>
       <div

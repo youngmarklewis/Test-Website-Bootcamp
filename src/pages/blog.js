@@ -33,7 +33,7 @@ const BlogPage = () => {
           node {
             title
             slug
-            publishedDate(formatString: "MMMM Do, YYYY")
+            publishedDate(formatString: "Do MMMM YYYY")
             author
             image {
               fluid {
