@@ -74,10 +74,10 @@ const BlogPage = () => {
           return (
             <li className={blogStyles.post}>
               <Link to={`/blog/${edge.node.slug}`}>
-                <div>
+                <h2>{edge.node.title}</h2>
+                <div className={blogStyles.blogImages}>
                   <Image fluid={edge.node.image.fluid} />
                 </div>
-                <h2>{edge.node.title}</h2>
                 <p>{edge.node.author}</p>
                 <p>{edge.node.publishedDate}</p>
               </Link>

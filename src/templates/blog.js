@@ -82,8 +82,9 @@ const Blog = props => {
       <p>{props.data.contentfulBlogPost.subTitle}</p>
       <p>
         <span>
-          {props.data.contentfulBlogPost.author}
+          {props.data.contentfulBlogPost.author},
           {props.data.contentfulBlogPost.publishedDate}
+          <p>{props.data.contentfulBlogPost.content.childContentfulRichText.timeToRead} Minute read...</p>
         </span>
       </p>
       <div

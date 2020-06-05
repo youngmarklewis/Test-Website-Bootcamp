@@ -14,7 +14,7 @@ module.exports = {
   /* Your site config here */
 
   siteMetadata: {
-    title: "My Full-Stack Website!",
+    title: "My Website",
     author: "Mark Lewis Young",
   },
   plugins: [
