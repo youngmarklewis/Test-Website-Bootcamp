@@ -16,6 +16,12 @@ module.exports = {
   siteMetadata: {
     title: "My Website",
     author: "Mark Lewis Young",
+    //   summary: "Lives in Leeds, learning Gatsby and React",
+    // },
+    // description: "My first full-stack website",
+    // siteUrl: "http://localhost:8000/",
+    // social: {
+    //   twitter: "testtweeter",
   },
   plugins: [
     "gatsby-plugin-react-helmet",

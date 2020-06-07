@@ -1,25 +1,11 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 //import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Image from "gatsby-image"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
 
-// export const query = graphql`
-//   query($slug: String!) {
-//     contentfulBlogPost(slug: { eq: $slug }) {
-//       title
-//       author
-//       publishedDate(formatString: "MMMM Do, YYYY")
-//       body {
-//         json
-//       }
-//     }
-//   }
-// `
-
-// My new test query
 export const query = graphql`
   query($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
@@ -63,7 +49,10 @@ export const query = graphql`
 
 // This code renders our content to the blog slug
 
-const Blog = props => {
+//const Blog = props => {
+const Blog = (props, pageContext) => {
+  const { prev, next } = pageContext
+
   // const options = {
   //   renderNode: {
   //     "embedded-asset-block": node => {
@@ -101,6 +90,34 @@ const Blog = props => {
             props.data.contentfulBlogPost.content.childContentfulRichText.html,
         }}
       />
+      <nav>
+        <ul
+          style={{
+            display: `flex`,
+            flexWrap: `wrap`,
+            justifyContent: `space-between`,
+            listStyle: `none`,
+            padding: 0,
+          }}
+        >
+          <li>
+            <p>test previous</p>
+            {prev && (
+              <Link to={"prev.slug"} rel="prev">
+                ← {"prev.props.data.contentfulBlogPost.title"}
+              </Link>
+            )}
+          </li>
+          <li>
+            <p>test next</p>
+            {next && (
+              <Link to={"next.slug"} rel="next">
+                {"next.props.data.contentfulBlogPost.title"} →
+              </Link>
+            )}
+          </li>
+        </ul>
+      </nav>
     </Layout>
   )
 }

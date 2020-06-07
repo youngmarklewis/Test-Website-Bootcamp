@@ -1,0 +1,13 @@
+// Added code for previous / next
+  const postNextPrevious = res.data.allContentfulBlogPost.edges
+
+  postNextPrevious.forEach(index => {
+    const previous =
+      index === postNextPrevious.length - 1
+        ? null
+        : postNextPrevious[index + 1].node
+    const next = index === 0 ? null : postNextPrevious[index - 1].node
+  })
+
+
+  Next example:
