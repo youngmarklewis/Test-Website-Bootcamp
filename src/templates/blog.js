@@ -51,6 +51,7 @@ export const query = graphql`
 
 //const Blog = props => {
 const Blog = (props, pageContext) => {
+  const post = props.data.contentfulBlogPost // destructuring props.data.contentfulBlogPost
   const { prev, next } = pageContext
 
   // const options = {
@@ -64,30 +65,28 @@ const Blog = (props, pageContext) => {
   // }
   // console.log(options)
 
+  // destructuring props.data.contentfulBlogPost with post.
+
   return (
     <Layout>
-      <Head title={props.data.contentfulBlogPost.title} />
-      <p>{props.data.contentfulBlogPost.fullDate}</p>
-      <h1>{props.data.contentfulBlogPost.title}</h1>
-      {props.data.contentfulBlogPost.author} {" Add author image "}
-      <Image fluid={props.data.contentfulBlogPost.image.fluid} />
-      <h2>{props.data.contentfulBlogPost.subTitle}</h2>
+      <Head title={post.title} />
+      <p>{post.fullDate}</p>
+      <h1>{post.title}</h1>
+      {post.author} {" Add author image "}
+      <Image fluid={post.image.fluid} />
+      <h2>{post.subTitle}</h2>
       <p>
         <span>
-          {props.data.contentfulBlogPost.fromNow}
+          {post.fromNow}
           <p>
-            {
-              props.data.contentfulBlogPost.content.childContentfulRichText
-                .timeToRead
-            }
+            {post.content.childContentfulRichText.timeToRead}
             {" Minute read... "}
           </p>
         </span>
       </p>
       <div
         dangerouslySetInnerHTML={{
-          __html:
-            props.data.contentfulBlogPost.content.childContentfulRichText.html,
+          __html: post.content.childContentfulRichText.html,
         }}
       />
       <nav>
@@ -104,7 +103,7 @@ const Blog = (props, pageContext) => {
             <p>test previous</p>
             {prev && (
               <Link to={"prev.slug"} rel="prev">
-                ← {"prev.props.data.contentfulBlogPost.title"}
+                ← {prev.props.data.contentfulBlogPost.title}
               </Link>
             )}
           </li>
