@@ -50,9 +50,8 @@ export const query = graphql`
 // This code renders our content to the blog slug
 
 //const Blog = props => {
-const Blog = (props, pageContext) => {
+const Blog = props => {
   const post = props.data.contentfulBlogPost // destructuring props.data.contentfulBlogPost
-  const { prev, next } = pageContext
 
   // const options = {
   //   renderNode: {
@@ -89,34 +88,6 @@ const Blog = (props, pageContext) => {
           __html: post.content.childContentfulRichText.html,
         }}
       />
-      <nav>
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            <p>test previous</p>
-            {prev && (
-              <Link to={"prev.slug"} rel="prev">
-                ← {prev.props.data.contentfulBlogPost.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            <p>test next</p>
-            {next && (
-              <Link to={"next.slug"} rel="next">
-                {"next.props.data.contentfulBlogPost.title"} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
     </Layout>
   )
 }
